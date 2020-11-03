@@ -15,7 +15,7 @@ let sodium;
 const root = protobuf.Root.fromJSON(qrMessage);
 const QrMessage = root.lookupType("qrpackage.QrMessage");
 
-const qrTypeNumber = 9;
+const qrTypeNumber = 8;
 const qrErrorCorrectionLevel = 'L';
 
 let generateKeys = () => {
@@ -30,9 +30,9 @@ let generateKeys = () => {
         publicKey: publicKey,
         name: "some name",
         location: "some location",
-        notificationKey: publicKey,
+        notificationKey: new Uint8Array(),
         venueType: "Bar",
-        signature: publicKey
+        signature: new Uint8Array()
     });
 
     let qr = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
