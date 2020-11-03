@@ -30,10 +30,13 @@ let generateKeys = () => {
         publicKey: publicKey,
         name: "some name",
         location: "some location",
-        notificationKey: new Uint8Array(),
-        venueType: "Bar",
-        signature: new Uint8Array()
+        room: "The Room",
+        venueType: 0,
+        notificationKey: new TextEncoder().encode("This is the notification key"),
+        signature: new TextEncoder().encode("This is the signature")
     });
+
+
 
     let qr = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
     qr.addData(`${BASE_URL}#${sodium.to_base64(privateKey)}`);
@@ -41,7 +44,11 @@ let generateKeys = () => {
     document.getElementById('private-key').innerHTML = qr.createSvgTag(10, 0);
 
     qr = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
-    qr.addData(`${BASE_URL}#${sodium.to_base64(QrMessage.encode(publicMessage).finish())}`);
+
+    var protoBufBytes = QrMessage.encode(publicMessage).finish();    
+    var protoBufBase64 = sodium.to_base64(protoBufBytes);
+
+    qr.addData(`${BASE_URL}#${protoBufBase64}`);
     qr.make();
     document.getElementById('public-key').innerHTML = qr.createSvgTag(10, 0);
 

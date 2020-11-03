@@ -2,6 +2,12 @@ export default {
     nested: {
         qrpackage: {
             nested: {
+                VenueType: {
+                    values: {
+                        "OTHER": 0,
+                        "RESTAURANT": 1
+                    }
+                },
                 QrMessage: {
                     fields: {
                         version: {
@@ -24,20 +30,25 @@ export default {
                             type: "string",
                             id: 4
                         },
+                        room: {
+                            rule: "required",
+                            type: "string",
+                            id: 5
+                        },                        
+                        venueType: {
+                            rule: "required",
+                            type: "VenueType",
+                            id: 6
+                        },
                         notificationKey: {
                             rule: "required",
                             type: "bytes",
-                            id: 5
-                        },
-                        venueType: {
-                            rule: "required",
-                            type: "string",
-                            id: 6
-                        },
+                            id: 7
+                        },                        
                         signature: {
                             rule: "required",
                             type: "bytes",
-                            id: 7
+                            id: 8
                         }
                     }
                 }
