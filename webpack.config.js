@@ -1,28 +1,28 @@
-const path = require('path');
+const path = require("path");
 module.exports = {
-  "mode": "none",
-  "entry": ['babel-polyfill', "./src/index.js"],
-  "output": {
-    "path": __dirname + '/dist',
-    "filename": "bundle.js"
+  mode: "none",
+  entry: ['babel-polyfill', "./src/index.js"],
+  output: {
+    path: __dirname + '/dist',
+    filename: "bundle.js"
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist')
   },
-  "module": {
-    "rules": [
+  module: {
+    rules: [
       {
-        "test": /\.scss$/,
-        "use": [
+        test: /\.scss$/,
+        use: [
           "style-loader",
           "css-loader",
           "sass-loader"
         ]
       },
       {
-        "test": /\.js$/,
-        "exclude": /node_modules/,
-        "use": {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
           "loader": "babel-loader",
           "options": {
             "presets": [

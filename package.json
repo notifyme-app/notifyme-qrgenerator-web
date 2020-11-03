@@ -22,7 +22,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "build": "webpack",
+    "build:dev": "webpack",
+    "build:prod": "webpack",
     "dev-server": "webpack serve"
   },
   "dependencies": {

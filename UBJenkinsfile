@@ -1,0 +1,49 @@
+pipeline {
+    agent { label 'java11' }
+    tools { nodejs 'NodeJS12.14.0' }
+    parameters {
+        string(name: 'branch', defaultValue: '', description: 'Branch or tag to pull from github')
+        choice(name: 'environmentToDeploy', choices: ['dev', 'prod'], description: 'Environment to deploy')
+    }
+    stages {
+        stage('Preparation') {
+            steps {
+                script {
+                    env.USER_ID = sh ( script: 'id -u', returnStdout: true ).trim()
+                }
+            }
+        }
+
+        stage('Build Web App') {
+            agent {
+                docker {
+                    image 'node:13.8-alpine'
+                    args "-v $HOME:/src -u ${env.USER_ID}"
+                }
+            }
+            steps {
+                dir('src/') {
+                    sh 'yarn cache clean'
+                    sh 'yarn install'
+                    sh 'yarn build:${environmentToDeploy}'
+                }
+                stash includes: 'build/**/*', name: 'build'
+            }
+        }
+
+        stage('Deploy Web App to Azure') {
+            steps {
+                unstash 'build'
+                dir('build') {
+                    azureUpload(
+                        storageCredentialId: 'n2s-blob-qr-gen-${environmentToDeploy}',
+                        filesPath: '**',
+                        containerName: '$web',
+                        storageType: 'blobstorage',
+                        blobProperties: [ $class: 'AzureBlobProperties', cacheControl: 'max-age=${environmentToDeploy == "dev" ? 0 : 300}', detectContentType: true ]
+                    )
+                }
+            }
+        }
+    }
+}
