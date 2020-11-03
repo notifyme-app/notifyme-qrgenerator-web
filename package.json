@@ -22,9 +22,9 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "build:dev": "webpack --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js",
-    "dev-server": "webpack serve --config webpack.dev.js"
+    "build:dev": "webpack --config webpack.dev.js --env BASE_URL='https://qr.n2s-dev.ch'",
+    "build:prod": "webpack --config webpack.prod.js --env BASE_URL='https://qr.n2s.ch'",
+    "dev-server": "webpack serve --config webpack.dev.js --env BASE_URL='https://qr.n2s-dev.ch'"
   },
   "dependencies": {
     "libsodium": "^0.7.8",

@@ -36,12 +36,12 @@ let generateKeys = () => {
     });
 
     let qr = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
-    qr.addData(`https://qr.n2s.ch#${sodium.to_base64(privateKey)}`);
+    qr.addData(`${BASE_URL}#${sodium.to_base64(privateKey)}`);
     qr.make();
     document.getElementById('private-key').innerHTML = qr.createSvgTag(10, 0);
 
     qr = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
-    qr.addData(`https://qr.n2s.ch#${sodium.to_base64(QrMessage.encode(publicMessage).finish())}`);
+    qr.addData(`${BASE_URL}#${sodium.to_base64(QrMessage.encode(publicMessage).finish())}`);
     qr.make();
     document.getElementById('public-key').innerHTML = qr.createSvgTag(10, 0);
 
