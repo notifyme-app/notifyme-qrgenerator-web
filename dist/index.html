@@ -4,10 +4,22 @@
 
   <title>N2Step QRCode Generator</title>
 
+  <script src="bundle.js"></script>
 </head>
 
 <body>
-	<div id="qrcode" class="center-screen"></div>
-	<script src="bundle.js"></script>
+  <div id="btn-wrapper">
+    <button id="generate-btn">Schlüssel generieren</button>
+  </div>
+  <div class="keys-row">
+    <div class="key-wrapper">
+      <h3>Private Key (do <b>NOT</b> publish)</h3>
+      <div id="private-key" class="key"></div>
+    </div>
+    <div class="key-wrapper">
+      <h3>Public Key</h3>
+      <div id="public-key" class="key"></div>
+    </div>
+  </div>
 </body>
 </html>
