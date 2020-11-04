@@ -14,12 +14,13 @@ let sodium;
 })();
 
 const rootQr = protobuf.Root.fromJSON(qrMessage);
-const QrMessage = rootQr.lookupType("qrpackage.QrMessage");
+const QRCodeContent = rootQr.lookupType("qrpackage.QRCodeContent");
+const QRCodeWrapper = rootQr.lookupType("qrpackage.QRCodeWrapper");
 
 const rootSeed = protobuf.Root.fromJSON(seedMessage);
 const SeedMessage = rootSeed.lookupType("seedpackage.SeedMessage");
 
-const qrTypeNumber = 8;
+const qrTypeNumber = 10;
 const qrErrorCorrectionLevel = 'L';
 
 let generateKeys = () => {
@@ -51,7 +52,7 @@ let generateKeys = () => {
     // TODO const m = ""
     // TODO signagure = ""
 
-    let publicMessage = QrMessage.create({
+    let qrCodeContent = QRCodeContent.create({
         version: 1,
         publicKey: publicKey,
         name: name,
@@ -61,19 +62,28 @@ let generateKeys = () => {
         notificationKey: notificationKey,
     });
 
-    let qr = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
-    qr.addData(`${BASE_URL}#${sodium.to_base64(privateKey)}`);
-    qr.make();
-    document.getElementById('qrtrace').innerHTML = qr.createSvgTag(10, 0);
+    const qrCodeContentProtoBufBytes = QRCodeContent.encode(qrCodeContent).finish();
+    const qrCodeContentSignature = sodium.crypto_sign_detached(qrCodeContentProtoBufBytes, privateKey);
 
-    qr = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
+    let qrCodeWrapper = QRCodeWrapper.create({
+        version: 1,
+        content: qrCodeContent,
+        signature: qrCodeContentSignature
+    });
 
-    var protoBufBytes = QrMessage.encode(publicMessage).finish();    
-    var protoBufBase64 = sodium.to_base64(protoBufBytes);
+    /// QR ENTRY ////
+    const qrEntry = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
+    const qrCodeWrapperProtoBufBytes = QRCodeWrapper.encode(qrCodeWrapper).finish();
+    const protoBufBase64 = sodium.to_base64(qrCodeWrapperProtoBufBytes);
+    qrEntry.addData(`${BASE_URL}#${protoBufBase64}`);
+    qrEntry.make();
+    document.getElementById('qrentry').innerHTML = qrEntry.createSvgTag(10, 0);
 
-    qr.addData(`${BASE_URL}#${protoBufBase64}`);
-    qr.make();
-    document.getElementById('qrentry').innerHTML = qr.createSvgTag(10, 0);
+    /// QR TRACE ////
+    const qrTrace = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
+    qrTrace.addData(`${BASE_URL}#${sodium.to_base64(privateKey)}`);
+    qrTrace.make();
+    document.getElementById('qrtrace').innerHTML = qrTrace.createSvgTag(10, 0);
 
     const wrappers = document.getElementsByClassName("key-wrapper");
     for(let i=0; i < wrappers.length; i++) wrappers[i].style.display = "initial";

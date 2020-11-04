@@ -8,7 +8,7 @@ export default {
                         "RESTAURANT": 1
                     }
                 },
-                QrMessage: {
+                QRCodeContent: {
                     fields: {
                         version: {
                             rule: "required",
@@ -45,6 +45,25 @@ export default {
                             type: "bytes",
                             id: 7
                         }                        
+                    }
+                },
+                QRCodeWrapper: {
+                    fields: {
+                        version: {
+                            rule: "required",
+                            type: "int32",
+                            id: 1
+                        },
+                        content: {
+                            rule: "required",
+                            type: "QRCodeContent",
+                            id: 2
+                        },
+                        signature: {
+                            rule: "required",
+                            type: "bytes",
+                            id: 3
+                        }
                     }
                 }
             }
