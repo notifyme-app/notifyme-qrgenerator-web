@@ -98,6 +98,6 @@ let ready = (fn) => {
 }
 
 ready(() => {
+    document.getElementById("revision").textContent = `Commit: ${GIT_INFO}`;
     document.getElementById('generate-btn').onclick = () => { generateKeys() };
 })
-

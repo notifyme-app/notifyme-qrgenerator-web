@@ -1,5 +1,5 @@
 const path = require("path");
-const webpack = require('webpack'); 
+const webpack = require('webpack');
 
 module.exports = env => {
   return {
@@ -42,7 +42,8 @@ module.exports = env => {
     },
     plugins: [
       new webpack.DefinePlugin({
-        'BASE_URL': JSON.stringify(env.BASE_URL)
+        'BASE_URL': JSON.stringify(env.BASE_URL),
+        'GIT_INFO': JSON.stringify(env.GIT_INFO)
       })
     ]
   }

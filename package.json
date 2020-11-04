@@ -22,9 +22,9 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "build:dev": "webpack --config webpack.dev.js --env BASE_URL='https://qr-dev.n2s.ch'",
-    "build:prod": "webpack --config webpack.prod.js --env BASE_URL='https://qr.n2s.ch'",
-    "dev-server": "webpack serve --config webpack.dev.js --env BASE_URL='https://qr-dev.n2s.ch'"
+    "build:dev": "webpack --config webpack.dev.js --env BASE_URL='https://qr-dev.n2s.ch' --env GIT_INFO=\"$(git log -1 --format='%h, %ad' --date=format:'%d.%m.%Y, %H:%M')\"",
+    "build:prod": "webpack --config webpack.prod.js --env BASE_URL='https://qr.n2s.ch' --env GIT_INFO=\"$(git log -1 --format='%h, %ad' --date=format:'%d.%m.%Y, %H:%M')\"",
+    "dev-server": "webpack serve --config webpack.dev.js --env BASE_URL='https://qr-dev.n2s.ch' --env GIT_INFO=\"$(git log -1 --format='%h, %ad' --date=format:'%d.%m.%Y, %H:%M')\""
   },
   "dependencies": {
     "libsodium-sumo": "^0.7.8",
