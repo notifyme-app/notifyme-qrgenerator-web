@@ -41,7 +41,7 @@ let generateKeys = () => {
     let qr = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
     qr.addData(`${BASE_URL}#${sodium.to_base64(privateKey)}`);
     qr.make();
-    document.getElementById('private-key').innerHTML = qr.createSvgTag(10, 0);
+    document.getElementById('qrtrace').innerHTML = qr.createSvgTag(10, 0);
 
     qr = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
 
@@ -50,7 +50,7 @@ let generateKeys = () => {
 
     qr.addData(`${BASE_URL}#${protoBufBase64}`);
     qr.make();
-    document.getElementById('public-key').innerHTML = qr.createSvgTag(10, 0);
+    document.getElementById('qrentry').innerHTML = qr.createSvgTag(10, 0);
 
     const wrappers = document.getElementsByClassName("key-wrapper");
     for(let i=0; i < wrappers.length; i++) wrappers[i].style.display = "initial";
