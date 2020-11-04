@@ -2881,17 +2881,17 @@ klona@^2.0.4:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
   integrity sha512-ZRbnvdg/NxqzC7L9Uyqzf4psi1OM4Cuc+sJAkQPjO6XkQIJTNbfK2Rsmbw8fx1p2mkZdp2FZYo2+LwXYY/uwIA==
 
-libsodium-wrappers@^0.7.8:
+libsodium-sumo@^0.7.0, libsodium-sumo@^0.7.8:
   version "0.7.8"
-  resolved "https://registry.yarnpkg.com/libsodium-wrappers/-/libsodium-wrappers-0.7.8.tgz#d95cdf3e7236c2aef76844bf8e1929ba9eef3e9e"
-  integrity sha512-PDhPWXBqd/SaqAFUBgH2Ux7b3VEEJgyD6BQB+VdNFJb9PbExGr/T/myc/MBoSvl8qLzfm0W0IVByOQS5L1MrCg==
-  dependencies:
-    libsodium "0.7.8"
+  resolved "https://registry.yarnpkg.com/libsodium-sumo/-/libsodium-sumo-0.7.8.tgz#66789762e45c521a2373808eb7c8184120f61bab"
+  integrity sha512-5ev5rkfWQwrf77OI0R/qnrqtwF7gyq9mklid46o+sc9YfZBzjg1VgbU56/+nFv8B9tE37OdG6w0fyJuvyNElzg==
 
-libsodium@0.7.8, libsodium@^0.7.8:
+libsodium-wrappers-sumo@^0.7.8:
   version "0.7.8"
-  resolved "https://registry.yarnpkg.com/libsodium/-/libsodium-0.7.8.tgz#fbd12247b7b1353f88d8de1cbc66bc1a07b2e008"
-  integrity sha512-/Qc+APf0jbeWSaeEruH0L1/tbbT+sbf884ZL0/zV/0JXaDPBzYkKbyb/wmxMHgAHzm3t6gqe7bOOXAVwfqVikQ==
+  resolved "https://registry.yarnpkg.com/libsodium-wrappers-sumo/-/libsodium-wrappers-sumo-0.7.8.tgz#5212750e8012b33a48f4c01dd8d22683b2e1fc42"
+  integrity sha512-a36GRLb59E5Zx8br6Xvwk6QsnYWodkCJFvNQxnhrvL9t9i4v6v3V/cv3h0/pxehf35ljVCWqoi0CawMQ8C1JmA==
+  dependencies:
+    libsodium-sumo "^0.7.0"
 
 line-column@^1.0.2:
   version "1.0.2"

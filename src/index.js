@@ -1,8 +1,9 @@
 import './styles/main.scss'
 import protobuf from 'protobufjs'
 import qrcode from 'qrcode-generator'
-import _sodium from 'libsodium-wrappers'
+import _sodium from 'libsodium-wrappers-sumo'
 import qrMessage from './protobuf/qrMessage'
+import seedMessage from './protobuf/seedMessage'
 
 let sodiumLoaded = false;
 let sodium;
@@ -12,8 +13,11 @@ let sodium;
     sodium = _sodium;
 })();
 
-const root = protobuf.Root.fromJSON(qrMessage);
-const QrMessage = root.lookupType("qrpackage.QrMessage");
+const rootQr = protobuf.Root.fromJSON(qrMessage);
+const QrMessage = rootQr.lookupType("qrpackage.QrMessage");
+
+const rootSeed = protobuf.Root.fromJSON(seedMessage);
+const SeedMessage = rootSeed.lookupType("seedpackage.SeedMessage");
 
 const qrTypeNumber = 8;
 const qrErrorCorrectionLevel = 'L';
@@ -23,20 +27,39 @@ let generateKeys = () => {
         console.log("not yet loaded");
         return;
     }
-    const { publicKey, privateKey } = sodium.crypto_sign_keypair();
+
+    const name = document.getElementById('name').value;
+    const location = document.getElementById('location').value;
+    const room = document.getElementById('room').value;
+    const venueType = parseInt(document.getElementById('venuetype').value);
+
+    const salt = sodium.randombytes_buf(32);
+    const notificationKey = sodium.crypto_secretbox_keygen();
+
+    let seedMessage = SeedMessage.create({
+        salt: salt,
+        notificationKey: notificationKey,
+        name: name,
+        location: location,
+        room: room
+    });
+    const seed = SeedMessage.encode(seedMessage).finish();
+
+    const { publicKey, privateKey } = sodium.crypto_sign_seed_keypair(sodium.crypto_hash_sha256(seed));
+
+    // TODO const ctx = "";
+    // TODO const m = ""
+    // TODO signagure = ""
 
     let publicMessage = QrMessage.create({
         version: 1,
         publicKey: publicKey,
-        name: document.getElementById('name').value,
-        location: document.getElementById('location').value,
-        room: document.getElementById('room').value,
-        venueType: parseInt(document.getElementById('venuetype').value),
-        notificationKey: new TextEncoder().encode("This is the notification key"),
-        signature: new TextEncoder().encode("This is the signature")
+        name: name,
+        location: location,
+        room: room,
+        venueType: venueType,
+        notificationKey: notificationKey,
     });
-
-
 
     let qr = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
     qr.addData(`${BASE_URL}#${sodium.to_base64(privateKey)}`);

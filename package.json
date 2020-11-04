@@ -27,8 +27,8 @@
     "dev-server": "webpack serve --config webpack.dev.js --env BASE_URL='https://qr-dev.n2s.ch'"
   },
   "dependencies": {
-    "libsodium": "^0.7.8",
-    "libsodium-wrappers": "^0.7.8",
+    "libsodium-sumo": "^0.7.8",
+    "libsodium-wrappers-sumo": "^0.7.8",
     "protobufjs": "^6.10.1",
     "qrcode-generator": "^1.4.4"
   }
