@@ -44,12 +44,7 @@ export default {
                             rule: "required",
                             type: "bytes",
                             id: 7
-                        },                        
-                        signature: {
-                            rule: "required",
-                            type: "bytes",
-                            id: 8
-                        }
+                        }                        
                     }
                 }
             }

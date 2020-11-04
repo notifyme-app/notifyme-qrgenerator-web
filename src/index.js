@@ -28,10 +28,10 @@ let generateKeys = () => {
     let publicMessage = QrMessage.create({
         version: 1,
         publicKey: publicKey,
-        name: "some name",
-        location: "some location",
-        room: "The Room",
-        venueType: 0,
+        name: document.getElementById('name').value,
+        location: document.getElementById('location').value,
+        room: document.getElementById('room').value,
+        venueType: parseInt(document.getElementById('venuetype').value),
         notificationKey: new TextEncoder().encode("This is the notification key"),
         signature: new TextEncoder().encode("This is the signature")
     });
