@@ -43,7 +43,8 @@ module.exports = env => {
     plugins: [
       new webpack.DefinePlugin({
         'BASE_URL': JSON.stringify(env.BASE_URL),
-        'GIT_INFO': JSON.stringify(env.GIT_INFO)
+        'GIT_INFO': JSON.stringify(env.GIT_INFO),
+        'PUBLIC_KEY': JSON.stringify(env.PUBLIC_KEY),
       })
     ]
   }

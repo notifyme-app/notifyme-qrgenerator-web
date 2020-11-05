@@ -29,6 +29,8 @@ let generateKeys = () => {
         return;
     }
 
+    const authorityPublicKey = sodium.from_hex(`${PUBLIC_KEY}`);
+
     const name = document.getElementById('name').value;
     const location = document.getElementById('location').value;
     const room = document.getElementById('room').value;
@@ -47,10 +49,6 @@ let generateKeys = () => {
     const seed = SeedMessage.encode(seedMessage).finish();
 
     const { publicKey, privateKey } = sodium.crypto_sign_seed_keypair(sodium.crypto_hash_sha256(seed));
-
-    // TODO const ctx = "";
-    // TODO const m = ""
-    // TODO signagure = ""
 
     let qrCodeContent = QRCodeContent.create({
         version: 1,
@@ -71,6 +69,8 @@ let generateKeys = () => {
         signature: qrCodeContentSignature
     });
 
+    const ctx = sodium.crypto_box_seal(seed, authorityPublicKey);
+
     /// QR ENTRY ////
     const qrEntry = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
     const qrCodeWrapperProtoBufBytes = QRCodeWrapper.encode(qrCodeWrapper).finish();
@@ -81,7 +81,7 @@ let generateKeys = () => {
 
     /// QR TRACE ////
     const qrTrace = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
-    qrTrace.addData(`${BASE_URL}#${sodium.to_base64(privateKey)}`);
+    qrTrace.addData(sodium.to_base64(ctx));
     qrTrace.make();
     document.getElementById('qrtrace').innerHTML = qrTrace.createSvgTag(10, 0);
 
@@ -98,6 +98,9 @@ let ready = (fn) => {
 }
 
 ready(() => {
-    document.getElementById("revision").textContent = `Commit: ${GIT_INFO}`;
+    const commit = `${GIT_INFO}`;
+    if (commit) {
+        document.getElementById("revision").textContent = `Commit: ` + commit;
+    }
     document.getElementById('generate-btn').onclick = () => { generateKeys() };
 })

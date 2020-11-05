@@ -22,9 +22,9 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "build:dev": "webpack --config webpack.dev.js --env BASE_URL='https://qr-dev.n2s.ch' --env GIT_INFO=\"$(git log -1 --format='%h, %ad' --date=format:'%d.%m.%Y, %H:%M')\"",
-    "build:prod": "webpack --config webpack.prod.js --env BASE_URL='https://qr.n2s.ch' --env GIT_INFO=\"$(git log -1 --format='%h, %ad' --date=format:'%d.%m.%Y, %H:%M')\"",
-    "dev-server": "webpack serve --config webpack.dev.js --env BASE_URL='https://qr-dev.n2s.ch' --env GIT_INFO=\"$(git log -1 --format='%h, %ad' --date=format:'%d.%m.%Y, %H:%M')\""
+    "build:dev": "webpack --config webpack.dev.js --env BASE_URL='https://qr-dev.n2s.ch' --env GIT_INFO=\"$(git log -1 --format='%h, %ad' --date=format:'%d.%m.%Y, %H:%M')\" --env PUBLIC_KEY='dac7415a963eacc9d9d698f7d820b25f7e7906482ad121fb652eefa08ec29129'",
+    "build:prod": "webpack --config webpack.prod.js --env BASE_URL='https://qr.n2s.ch' --env GIT_INFO=\"$(git log -1 --format='%h, %ad' --date=format:'%d.%m.%Y, %H:%M')\" --env PUBLIC_KEY='b83ddb8ea6b76efe407d1006a42ed5f450f2c75120ac676aadf08f874745590b'",
+    "dev-server": "webpack serve --config webpack.dev.js --env BASE_URL='https://qr-dev.n2s.ch' --env GIT_INFO=\"$(git log -1 --format='%h, %ad' --date=format:'%d.%m.%Y, %H:%M')\" --env PUBLIC_KEY='dac7415a963eacc9d9d698f7d820b25f7e7906482ad121fb652eefa08ec29129'"
   },
   "dependencies": {
     "libsodium-sumo": "^0.7.8",
