@@ -16,9 +16,13 @@ $teal: #00a690;
 
   .key-wrapper {
     display: none;
-    margin-left: 20px;
+    width: 50%;
 
     h3 {
+      text-align: center;
+    }
+
+    #qrentry, #qrtrace {
       text-align: center;
     }
 
@@ -47,6 +51,10 @@ $teal: #00a690;
   text-align: center;
   margin-bottom: 32px;
   margin-top: 32px;
+
+  @media print {
+    display: none;
+  }
 }
 
 #revision {
