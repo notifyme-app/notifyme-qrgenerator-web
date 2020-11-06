@@ -1,0 +1,6 @@
+import './fonts/Inter-Bold.otf'
+import './fonts/Inter-Bold.woff'
+import './fonts/Inter-Bold.woff2'
+import './fonts/Inter-Light.otf'
+import './fonts/Inter-Light.woff'
+import './fonts/Inter-Light.woff2'
