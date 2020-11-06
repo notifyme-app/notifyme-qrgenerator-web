@@ -3,7 +3,7 @@ import qrcode from 'qrcode-generator'
 
 const typeNumber = 10;
 const errorCorrectionLevel = 'L';
-const cellSize = 10;
+const cellSize = 4;
 const margin = 0;
 
 const generateQrCode = (data) => {
