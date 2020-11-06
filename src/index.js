@@ -1,5 +1,4 @@
 import './styles/main.scss'
-import './static/fonts'
 import protobuf from 'protobufjs'
 import qrcode from 'qrcode-generator'
 import _sodium from 'libsodium-wrappers-sumo'

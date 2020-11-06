@@ -1,3 +1,9 @@
+$purple: #413f8d;
+$purple-dark: #292859;
+$teal: #00a690;
+
+@import "fonts";
+
 .keys-row {
   display: flex;
 
@@ -23,4 +29,36 @@
   align-items: right;
   text-align: right;
   font-style: italic;
+}
+
+.mui-btn {
+  color: white;
+  background-color: $purple;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: white;
+    background-color: $purple-dark;
+  }
+}
+
+.mui-textfield input,
+.mui-select select {
+  &:focus,
+  &:active {
+    border-bottom-color: $teal;
+
+    + label {
+      color: $teal;
+    }
+  }
+}
+
+.mui-select:focus select {
+  border-bottom-color: $teal;
+
+  + label {
+    color: $teal;
+  }
 }

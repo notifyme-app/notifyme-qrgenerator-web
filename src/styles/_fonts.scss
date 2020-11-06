@@ -1,0 +1,67 @@
+@font-face {
+    font-family: Inter;
+    src: local(Inter-Bold), url(../static/fonts/Inter-Bold.woff2) format("woff2"),
+        url(../static/fonts/Inter-Bold.woff) format("woff"), url(../static/fonts/Inter-Bold.otf) format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: Inter;
+    src: local(Inter-SemiBold), url(../static/fonts/Inter-SemiBold.woff2) format("woff2"),
+        url(../static/fonts/Inter-SemiBold.woff) format("woff"),
+        url(../static/fonts/Inter-SemiBold.otf) format("opentype");
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: Inter;
+    src: local(Inter-Regular), url(../static/fonts/Inter-Regular.woff2) format("woff2"),
+        url(../static/fonts/Inter-Regular.woff) format("woff"),
+        url(../static/fonts/Inter-Regular.otf) format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: Inter;
+    src: local(Inter-Light), url(../static/fonts/Inter-Light.woff2) format("woff2"),
+        url(../static/fonts/Inter-Light.woff) format("woff"),
+        url(../static/fonts/Inter-Light.otf) format("opentype");
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+body {
+    font-family: Inter;
+    font-weight: 400;
+    font-style: normal;
+    font-style: normal;
+}
+
+h3 {
+    font-family: Inter;
+    font-size: 28px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: black;
+}
+
+label {
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    color: black;
+}

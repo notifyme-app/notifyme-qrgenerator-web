@@ -4,22 +4,37 @@
 
   <title>N2Step QRCode Generator</title>
 
+  <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+  <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
   <script src="bundle.js"></script>
 </head>
 
 <body>
   <div class="center-screen">
-    <label>Name</label><input id="name" name="name" type="text">
-    <label>Location</label><input id="location" name="location" type="text">
-    <label>Room</label><input id="room" name="room" type="text">
-    <label>Venue Type</label>
-    <select name="venuetype" id="venuetype">
-      <option value="0">Other</option>
-      <option value="1">Restaurant</option>
-    </select>
+    <div class="mui-textfield mui-textfield--float-label">
+      <input id="name" name="name" type="text">
+      <label>Name</label>
+    </div>
+    <div class="mui-textfield mui-textfield--float-label">
+      <input id="location" name="location" type="text">
+      <label>Location</label>
+    </div>
+    <div class="mui-textfield mui-textfield--float-label">
+      <input id="room" name="room" type="text">
+      <label>Room</label>
+    </div>
+    
+    <div class="mui-select">
+      <select name="venuetype" id="venuetype">
+        <option value="0">Other</option>
+        <option value="1">Restaurant</option>
+      </select>
+      <label>Venue Type</label>
+    </div>
+    
     <br>
     <div id="btn-wrapper">
-      <button id="generate-btn">Schlüssel generieren</button>
+      <button id="generate-btn" class="mui-btn">Schlüssel generieren</button>
     </div>
     <div class="keys-row">
       <div class="key-wrapper">
