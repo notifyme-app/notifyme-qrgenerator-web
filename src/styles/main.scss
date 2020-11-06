@@ -23,12 +23,9 @@ $teal: #00a690;
 }
 
 #revision {
-  display: flex;
-  flex-direction: column;
-  justify-content: right;
-  align-items: right;
-  text-align: right;
-  font-style: italic;
+  position: absolute;
+  top: 20;
+  right: 20;
 }
 
 .mui-btn {
@@ -60,5 +57,11 @@ $teal: #00a690;
 
   + label {
     color: $teal;
+  }
+}
+
+.mdtoast {
+  &.mdt--WARNING {
+    background-color: #EF5350;
   }
 }

@@ -28,6 +28,7 @@
     "dev-server": "webpack serve --config webpack.dev.js --env BASE_URL='https://qr-dev.n2s.ch' --env GIT_INFO=\"$(git log -1 --format='%h, %ad' --date=format:'%d.%m.%Y, %H:%M')\" --env PUBLIC_KEY='dac7415a963eacc9d9d698f7d820b25f7e7906482ad121fb652eefa08ec29129' --env UPLOAD_URL='upload-dev.n2s.ch'"
   },
   "dependencies": {
+    "@dmuy/toast": "^2.0.2",
     "libsodium-sumo": "^0.7.8",
     "libsodium-wrappers-sumo": "^0.7.8",
     "protobufjs": "^6.10.1",
