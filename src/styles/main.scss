@@ -94,3 +94,13 @@ $teal: #00a690;
     background-color: #ef5350;
   }
 }
+
+#print-btn-wrapper {
+  text-align: center;
+  display: none;
+  margin-top: 32px;
+
+  @media print {
+    display: none !important;
+  }
+}

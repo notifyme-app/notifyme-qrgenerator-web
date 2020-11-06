@@ -26,7 +26,8 @@ const generateKeys = () => {
     document.getElementById('qrtrace').innerHTML = generateQrCode(`${UPLOAD_URL}#${trace}`);
 
     const wrappers = document.getElementsByClassName("key-wrapper");
-    for(let i=0; i < wrappers.length; i++) wrappers[i].style.display = "initial";
+    for(let i=0; i < wrappers.length; i++) wrappers[i].style.display = "block";
+    document.getElementById("print-btn-wrapper").style.display = "block";
 };
 
 export default generateKeys;
