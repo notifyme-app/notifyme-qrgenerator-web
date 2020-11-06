@@ -81,7 +81,7 @@ let generateKeys = () => {
 
     /// QR TRACE ////
     const qrTrace = qrcode(qrTypeNumber, qrErrorCorrectionLevel);
-    qrTrace.addData(sodium.to_base64(ctx));
+    qrTrace.addData(`${UPLOAD_URL}#` + sodium.to_base64(ctx));
     qrTrace.make();
     document.getElementById('qrtrace').innerHTML = qrTrace.createSvgTag(10, 0);
 
