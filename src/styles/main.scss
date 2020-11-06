@@ -47,11 +47,16 @@ $teal: #00a690;
   text-align: center;
   margin-bottom: 32px;
   margin-top: 32px;
+}
 
-  #revision {
-    position: absolute;
-    top: 10;
-    right: 10;
+#revision {
+  position: fixed;
+  bottom: 10;
+  right: 10;
+  font-size: 12px;
+
+  @media print {
+    display: none;
   }
 }
 
@@ -64,6 +69,12 @@ $teal: #00a690;
   &:focus {
     color: white;
     background-color: $purple-dark;
+  }
+}
+
+#generate-btn-wrapper {
+  @media print {
+    display: none;
   }
 }
 
