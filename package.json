@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Key QR Code Generator Web App",
   "main": "index.js",
-  "repository": "https://github.com/UbiqueInnovation/n2step-qrgenerator-web.git",
+  "repository": "https://github.com/notifyme-app/notifyme-qrgenerator-web.git",
   "author": "n2step@ubique.ch",
   "license": "MPL-2.0",
   "private": true,
