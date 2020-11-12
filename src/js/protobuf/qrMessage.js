@@ -5,7 +5,9 @@ export default {
                 VenueType: {
                     values: {
                         "OTHER": 0,
-                        "RESTAURANT": 1
+                        "MEETING_ROOM": 1,
+                        "CAFETERIA": 2,
+                        "PRIVATE_PARTY": 3
                     }
                 },
                 QRCodeContent: {
@@ -34,7 +36,7 @@ export default {
                             rule: "required",
                             type: "string",
                             id: 5
-                        },                        
+                        },
                         venueType: {
                             rule: "required",
                             type: "VenueType",
@@ -44,7 +46,7 @@ export default {
                             rule: "required",
                             type: "bytes",
                             id: 7
-                        }                        
+                        }
                     }
                 },
                 QRCodeWrapper: {
