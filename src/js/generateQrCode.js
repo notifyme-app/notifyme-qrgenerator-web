@@ -1,7 +1,7 @@
 
 import qrcode from 'qrcode-generator'
 
-const typeNumber = 10;
+const typeNumber = 0; // automatic
 const errorCorrectionLevel = 'L';
 const cellSize = 4;
 const margin = 0;
