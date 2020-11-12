@@ -1,10 +1,10 @@
 {
-  "name": "n2step-qrgenerator-web",
+  "name": "notifyme-qrgenerator-web",
   "version": "0.0.1",
   "description": "Key QR Code Generator Web App",
   "main": "index.js",
   "repository": "https://github.com/notifyme-app/notifyme-qrgenerator-web.git",
-  "author": "n2step@ubique.ch",
+  "author": "notify-me@ubique.ch",
   "license": "MPL-2.0",
   "private": true,
   "devDependencies": {

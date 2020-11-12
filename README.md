@@ -1,2 +1,2 @@
-# n2step-qrgenerator-web
+# notifyme-qrgenerator-web
 Key QR Code Generator Web App
